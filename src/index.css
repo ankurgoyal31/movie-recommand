@@ -1,4 +1,4 @@
-
+    
 .body{
   background-color: black;
  }
@@ -1097,7 +1097,7 @@ html, body {
   .menu.open {
     /* max-height: 200px; */
     display: flex;
-    margin-top: 130%;
+    margin-top: 135%;
     flex-direction: column;
      transform: translateY(0);
      position: absolute;
