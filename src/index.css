@@ -1097,8 +1097,8 @@ html, body {
   .menu.open {
     /* max-height: 200px; */
     display: flex;
-    margin-top: 100%;
-      flex-direction: column;
+    margin-top: 130%;
+    flex-direction: column;
      transform: translateY(0);
      position: absolute;
      background-color:#141414a1;
@@ -1212,7 +1212,12 @@ font-size: 35px;
   .about-hero h1 {
     font-size: 30px;
   }
- 
+ .watchl{
+  margin-top: 20%;
+}
+  .search-box{
+      width: 300px;
+     }
   .about-hero p {
     font-size: 16px;
   }
