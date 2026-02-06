@@ -59,9 +59,16 @@ n("");
       {/* <div className="color">  */}
       <ul className={`menu ${open ? "open" : ""}`}>
         {!window.innerWidth >768 && <li style={{fontSize:'25px'}}>🏠</li>}
-          <li><a className="hides" href="/">🎦 Movies</a></li>
-        <li><a className="hides" href="/com/watchlist">👁️watched</a></li>
-         <li><a className="hides" href="/about">👁️About</a></li>
+           <li>
+  <Link className="hides" to="/com/watchlist">🏚️Home</Link>
+</li>
+        <li>
+  <Link className="hides" to="/com/watchlist">👁️ Watched</Link>
+</li>
+
+<li>
+  <Link className="hides" to="/about">ℹ️ About</Link>
+</li>
        </ul>
      
       <div className={`search-box ${open ? "open" : ""}`}>
