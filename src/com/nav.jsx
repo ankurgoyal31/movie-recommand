@@ -71,14 +71,14 @@ n("");
 </li>
        </ul>
      
-      <div className={`search-box ${open ? "open" : ""}`}>
+   { location.pathname=="/" &&<>  <div className={`search-box ${open ? "open" : ""}`}>
         <input value={m}
           onChange={(e) => n(e.target.value)}
           placeholder="Search movies..."
         />
-      <button onClick={set}>🔍</button> 
+      <button onClick={set}>🔍</button>
       {/* </div> */}
-        </div>
+        </div></>}
        <button className="mobile-search-btn" onClick={()=>notopen(!open)}>
   🔍 
 </button>
