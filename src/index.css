@@ -857,7 +857,7 @@ color: red;
   .email{
     color: white;
     padding: 10px;
-    font-size: 20px;
+    font-size: 15px;
     background: linear-gradient(135deg,#b443ca,#e06668,#2c6455);
     border-radius: 20px;
     font-weight: bold;
@@ -870,7 +870,7 @@ color: red;
         background: linear-gradient(135deg,#3221ec,#040404,#09f2b4);
   padding: 10px;
       border-radius: 20px;
-font-size: 20px;
+font-size: 15px;
 cursor: pointer;
 font-weight: bold;
   
@@ -1088,7 +1088,7 @@ html, body {
      }
      .search-box.open{
       display: flex;
-      margin-top: 120%;
+      margin-top: 190%;
       position: absolute;
       margin-left: 20%;
       /* justify-self: center; */
@@ -1097,7 +1097,7 @@ html, body {
   .menu.open {
     /* max-height: 200px; */
     display: flex;
-    margin-top: 135%;
+    margin-top: 145%;
     flex-direction: column;
      transform: translateY(0);
      position: absolute;
@@ -1117,7 +1117,7 @@ html, body {
 /* justify-self: center; */
 /* margin: auto; */
 margin-left: 40%;
-font-size: 20px;
+font-size: 15px;
   }
   
 
