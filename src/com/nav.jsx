@@ -60,7 +60,7 @@ n("");
       <ul className={`menu ${open ? "open" : ""}`}>
         {!window.innerWidth >768 && <li style={{fontSize:'25px'}}>🏠</li>}
            <li>
-  <Link className="hides" to="/com/watchlist">🏚️Home</Link>
+  <Link className="hides" to="/">🏚️Home</Link>
 </li>
         <li>
   <Link className="hides" to="/com/watchlist">👁️ Watched</Link>
