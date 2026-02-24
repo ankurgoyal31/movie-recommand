@@ -255,7 +255,6 @@ console.log(data)
         return(
            <div key={i} onClick={()=>send(item.title)} className='box'> 
                 <img className='img' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
-                 <div className='text'>{item. original_title}</div>
                  <div className='text'>{item. release_date}</div>
         </div>
         )
