@@ -386,7 +386,6 @@ else{
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt=""
               />
-              <div className="setkaro">{item.original_title}</div>
               <div className="setdata12">{item.release_date}</div>
             </div>
           ))}
