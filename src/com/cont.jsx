@@ -4,13 +4,14 @@ import { HiHandThumbUp, HiHandThumbDown } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { scontex } from "./contx";
+import { Link } from "react-router-dom";
+
 function Cont() {
   const { movie } = useParams();
   const { state } = useLocation();
   const { pro } = useContext(scontex);
   const navigate = useNavigate();
-
-  const safeMovie = decodeURIComponent(movie);
+   const safeMovie = decodeURIComponent(movie);
   console.log(safeMovie)
   const resumeTime = state?.time ?? 0;
   const playerRef = useRef(null);
@@ -325,21 +326,21 @@ else{
       <div className="df">
         <div className="icon">
           <div ref={sty} onClick={like}>
-            <HiHandThumbUp size={28} />
+            <HiHandThumbUp size={20} />
           </div>
           {likes && <div className="liked">{likes}</div>}
 
           <div ref={styu} onClick={unlike} className="like">
-            <HiHandThumbDown size={28} />
+            <HiHandThumbDown size={20} />
           </div>
           {ulikes && <div className="lined">{ulikes}</div>}
         </div>
 
         <div className="save">
           <div>
-            <AiOutlinePlus size={28} color="white" />
+            <AiOutlinePlus size={20} color="white" />
           </div>
-          <div
+          {pro && <div
             onClick={() =>
               add(
                 f.title,
@@ -356,9 +357,11 @@ else{
             className="cv"
           >
             Save
-          </div>
+          </div>}
+          {! pro &&<div className="cv">
+          <Link style={{color:"white",textDecoration:'none'}} to="/login">Login to save</Link>   
+          </div>}
         </div>
-
         <div onClick={des} className="ai">
           Summry
         </div>
@@ -367,7 +370,7 @@ else{
       {f && (
         <>
           <div className="rate">
-            <AiFillStar size={30} color="gold" />
+            <AiFillStar size={20} color="gold" />
             <div>{f.vote_average}</div>
           </div>
           <div className="sty">About Movie - {f.overview}</div>
@@ -386,6 +389,7 @@ else{
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt=""
               />
+              {/* <div className="setkaro">{item.original_title}</div> */}
               <div className="setdata12">{item.release_date}</div>
             </div>
           ))}
