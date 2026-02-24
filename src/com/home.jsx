@@ -234,7 +234,6 @@ console.log(data)
 
     <div className="info">
       <h2>{item.title}</h2>
-      <p className='set'>{item. overview}</p>
       <p>⭐ {item.vote_average}</p>
      </div>
    </div>
