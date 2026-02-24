@@ -355,12 +355,12 @@ else{
             }
             className="cv"
           >
-            Save In WatchList
+            Save
           </div>
         </div>
 
         <div onClick={des} className="ai">
-          Ai Genrated Summry
+          Summry
         </div>
       </div>
 
@@ -375,7 +375,7 @@ else{
       )}
   {sh && <h1 className="hd">{sh}</h1>}
   {u && <h1 className="hp">loading.....</h1>}
-      <h1 >All Recommended</h1>
+       <h1 >All Recommended</h1>
 
       <div className="setbox2">
         <div style={{color:"white",fontSize:'20px'}} className="fd">
