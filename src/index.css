@@ -1099,7 +1099,7 @@ html, body {
   .menu.open {
     /* max-height: 200px; */
     display: flex;
-    margin-top: 130%;
+    margin-top: 150%;
       flex-direction: column;
      transform: translateY(0);
      position: absolute;
