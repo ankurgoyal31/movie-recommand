@@ -35,9 +35,6 @@ headers: {
 Authorization: `Bearer ${token}`, 
 },
 })
-if(res.ok){
-  console.log("fuck",res.ok)
-}
 let data = await res.json();
 setProfile(data.user)
 localStorage.setItem("email",data.user.email);
@@ -179,7 +176,7 @@ const ck=async(p,i)=>{
        rs(da);
     }
     else{
-      throw 'server is fuck';
+      throw 'something went wrong';
     }
   }
   const send=async(p)=>{
@@ -231,7 +228,7 @@ console.log(data)
        <div className='fix'><h1 className='hk'>All Movies</h1></div>
 {p && <><h1 className='hd'>No found..</h1></>}
 {l && <><h1 className='hp'>loading.....</h1></>}
- 
+  
  <div className='setbox'> 
        <div className='id'> 
                <div className='fd'> 
