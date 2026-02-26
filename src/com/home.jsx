@@ -107,20 +107,6 @@ smsg("please Wait We are Loading Your Similier Data ...")
      getdata()
   }, [])
    
-  useEffect(() => {
-  const row = rowRef.current;
-  if (!row) return;
-
-  let id = setInterval(() => {  
-    row.scrollLeft += 1;
- 
-    if (row.scrollLeft + row.clientWidth >= row.scrollWidth) {
-      row.scrollLeft = 0;
-    }
-  }, 20);
-
-  return () => clearInterval(id);
-}, []);
 const cl =(i)=>{
   if(s[i]>=500){
 bx.current.style.backgroundColor = 'brown';
