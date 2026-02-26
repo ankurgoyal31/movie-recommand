@@ -50,7 +50,7 @@ function Cont() {
 
  async function save() {
   console.log("calling.....")
-  if (!first.length || !fRef.current) return "fuck";
+  if (!first.length || !fRef.current) return;
   try{     
     if(yesref.current){
   let movie = first[0].movie
