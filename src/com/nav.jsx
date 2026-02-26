@@ -13,24 +13,7 @@ const Nav = () => {
       const[sho,notsho] = useState(false)
       const[open,notopen] = useState(false)
  const[m,n] = useState("")
-// async function login() {
-//     const token = localStorage.getItem("token");
-//      let res = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
-// method: "GET",
-// headers: {
-// Authorization: `Bearer ${token}`, 
-// },
-// })
-// if(res.ok){
-//    notsho(true)
-// }
-// if(!res.ok){
-//    notsho(false)
-// } 
-//    }
 useEffect(() => { 
-  // const token = localStorage.getItem("token");
-// const email = localStorage.getItem("email");
  let y =  localStorage.getItem("token")
  if(y){
 notsho(true)
