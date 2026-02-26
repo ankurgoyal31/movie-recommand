@@ -884,7 +884,7 @@ color: white;
 }
 @media (max-width: 767px) {
 .setbox{
-  width: 410px;
+  /* width: 410px; */
   /* display: flex; */
    margin: auto;
 }
@@ -1098,7 +1098,7 @@ html, body {
   .menu.open {
     /* max-height: 200px; */
     display: flex;
-    margin-top: 130%;
+    margin-top: 150%;
       flex-direction: column;
      transform: translateY(0);
      position: absolute;
