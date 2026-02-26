@@ -1010,7 +1010,7 @@ html, body {
   }
   .setbox2{
     margin: auto;
-    width: 410px;
+    width: 100%;
     /* padding: 200px; */
   }
   .mobilein{
