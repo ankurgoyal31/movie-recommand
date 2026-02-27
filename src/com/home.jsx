@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useEffect } from 'react'
+import { useEffect,useLayoutEffect } from 'react'
 import { useRef } from 'react';
    import { useNavigate } from 'react-router-dom';
    import { scontex } from './contx';
@@ -21,9 +21,9 @@ import { useRef } from 'react';
    const [profile, setProfile] = useState(null);
    const[msg,smsg] = useState("")
 console.log("backend",import.meta.env.VITE_BACKEND)
-  useEffect(() => {
-         getdata()
-  }, [pro]) 
+  useLayoutEffect(() => {
+    getdata()
+  }, [pro])
   
    async function login() {
  try{ 
