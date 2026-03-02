@@ -59,7 +59,6 @@ console.log(profile)
 async function getdata() {
   try {
 m(false);
-smsg("please Wait We are Loading Your Similier Data ...")
      let re = await fetch(`${import.meta.env.VITE_BACKEND}/similier`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
