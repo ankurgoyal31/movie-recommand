@@ -22,6 +22,15 @@ import { useRef } from 'react';
    const[msg,smsg] = useState("")
 console.log("backend",import.meta.env.VITE_BACKEND)
   useLayoutEffect(() => {
+  const cached = localStorage.getItem("movies")
+  if (cached){
+  m(false);
+  const sort = JSON.parse(cached)
+  setCount(sort)
+  let da = sort.filter(item => item.vote_average >=7.5||item.vote_average >=7||item.vote_average >=6).slice(0, 5);    // alert("cache called....")
+  rs(da);
+  smsg("")
+   }     
     getdata()
   }, [pro])
   
@@ -49,11 +58,8 @@ useEffect(() => {
 console.log(profile)
 async function getdata() {
   try {
-  // const token = localStorage.getItem("token");
-  // if(token){
 m(false);
 smsg("please Wait We are Loading Your Similier Data ...")
-  // }
      let re = await fetch(`${import.meta.env.VITE_BACKEND}/similier`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -71,6 +77,7 @@ smsg("please Wait We are Loading Your Similier Data ...")
       rs(da);
       setCount(gd);
       setCo(gd);
+      localStorage.setItem("movies", JSON.stringify(gd))
        console.log("sort movies=>",sort)
        smsg("")
        return;
@@ -84,10 +91,6 @@ smsg("please Wait We are Loading Your Similier Data ...")
     if (!res.ok) throw new Error("movies api failed");
     const data = await res.json();
     console.log("i am chache...",data)
-//      if(!re.ok && !Array.length){
-//   smsg("")
-// }
-// setTimeout(() => {
       m(false);
       let sort = data.sort((a,b)=>b.vote_average-a.vote_average);
     let da = sort.filter(item => item.vote_average >=7.5||item.vote_average >=7||item.vote_average >=6).slice(0, 5);
