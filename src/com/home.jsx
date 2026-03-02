@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { useEffect,useLayoutEffect } from 'react'
+import { useEffect,useLayoutEffect,useCallback } from 'react'
 import { useRef } from 'react';
    import { useNavigate } from 'react-router-dom';
    import { scontex } from './contx';
   import { useContext } from 'react';
     import Nav from './nav';
-    function Home() {
+  function Home() {
    const navigate = useNavigate();
    const rowRef = useRef(null);
   const [count, setCount] = useState([]);
@@ -15,26 +15,28 @@ import { useRef } from 'react';
     const [p,o] = useState(false);
   const bx = useRef(null);
   const bd = useRef(null);
+  const loader_condition = useRef(true)
     const [co, setCo] = useState([]);
   const[er,err] = useState(null)
       const { search,pro, setpro } = useContext(scontex);
    const [profile, setProfile] = useState(null);
    const[msg,smsg] = useState("")
-console.log("backend",import.meta.env.VITE_BACKEND)
-  useLayoutEffect(() => {
+
+ useEffect(() => {
   const cached = localStorage.getItem("movies")
   if (cached){
+   loader_condition.current =false;
   m(false);
+  smsg("")
   const sort = JSON.parse(cached)
   setCount(sort)
   let da = sort.filter(item => item.vote_average >=7.5||item.vote_average >=7||item.vote_average >=6).slice(0, 5);    // alert("cache called....")
   rs(da);
-  smsg("")
-   }     
-    getdata()
-  }, [pro])
+    }  
+   getdata()
+}, [pro])
   
-   async function login() {
+async function login() {
  try{ 
 const token = localStorage.getItem("token");
 if (!token) return;
@@ -44,6 +46,9 @@ headers: {
 Authorization: `Bearer ${token}`, 
 },
 })
+if(res.ok){
+  return "server is ok...."
+ }
 let data = await res.json();
 setProfile(data.user)
 localStorage.setItem("email",data.user.email);
@@ -55,20 +60,20 @@ setpro(data.user.email);
 useEffect(() => { 
  login();
 }, []);
+
 console.log(profile)
 async function getdata() {
+  if(loader_condition.current){smsg("Loading Your Similier Data ...")}
   try {
-m(false);
+  m(false);
      let re = await fetch(`${import.meta.env.VITE_BACKEND}/similier`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ em: pro })
     });
-    // smsg("please Wait We are Loading Your Similier Data ...")
-  console.log("SIMILIERgtrgjgg:", re);
+    console.log("SIMILIERgtrgjgg:", re);
      let gd = await re.json();
      console.log("SIMILIER:", gd);
- 
     if (Array.isArray(gd) && gd.length > 0) {
       m(false);
     let sort = gd.sort((a,b)=>b.vote_average-a.vote_average);
@@ -76,8 +81,8 @@ m(false);
       rs(da);
       setCount(gd);
       setCo(gd);
-      localStorage.setItem("movies", JSON.stringify(gd))
-       console.log("sort movies=>",sort)
+    localStorage.setItem("movies", JSON.stringify(gd))
+    console.log("sort movies=>",sort)
        smsg("")
        return;
     }
@@ -96,16 +101,13 @@ m(false);
     rs(da);
     setCount(data);
     setCo(data);
-// }, 2000);
-  } 
+    localStorage.setItem("movies", JSON.stringify(data))
+   } 
   catch (err) {
     console.error(err);
    }
 }
-  useEffect(() => {
-     getdata()
-  }, [])
-   
+
 const cl =(i)=>{
   if(s[i]>=500){
 bx.current.style.backgroundColor = 'brown';
@@ -206,7 +208,6 @@ console.log(data)
 </div>
 
 {er && <><h1 style={{color:'white'}}>{er}</h1></>}
-
  <div className="hero-row" ref={rowRef}>
       {re.map((item,i) => (
         <div key={i} onClick={()=>send(item.title)} className="hero-card" >
@@ -219,18 +220,18 @@ console.log(data)
 
     <div className="info">
       <h2>{item.title}</h2>
-      <p>⭐ {item.vote_average}</p>
+       <p>⭐ {item.vote_average}</p>
      </div>
    </div>
         </div> 
 
       ))}
     </div>
-        {!msg=="" && <h1 className='mobilein' style={{color:'white',position:"absolute",top:'50%',zIndex:'1000',backgroundColor:"red",justifySelf:"center"}}>{msg}</h1>}
-       <div className='fix'><h1 className='hk'>All Movies</h1></div>
+      {!msg=="" && <h1 className='mobilein' style={{color:'white',position:"absolute",top:'50%',zIndex:'1000',backgroundColor:"red"}}>{msg}</h1>}
+        <div className='fix'><h1 className='hk'>All Movies</h1></div>
 {p && <><h1 className='hd'>No found..</h1></>}
 {l && <><h1 className='hp'>loading.....</h1></>}
-  
+ 
  <div className='setbox'> 
        <div className='id'> 
                <div className='fd'> 
@@ -239,7 +240,7 @@ console.log(data)
         return(
            <div key={i} onClick={()=>send(item.title)} className='box'> 
                 <img className='img' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
-                 <div className='text'>{item. release_date}</div>
+                <div className='text'>{item. release_date}</div>
         </div>
         )
       })
@@ -247,11 +248,8 @@ console.log(data)
     </div>
     </div>
     </div>
-    {/* </div> */}
-
  <div className='dis'> 
 <div ref={bd} onClick={()=>cd(0)} className='ne'>First</div>
-
  {
  s.map((item,i)=>{
 return<>
