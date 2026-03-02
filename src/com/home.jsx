@@ -46,15 +46,12 @@ headers: {
 Authorization: `Bearer ${token}`, 
 },
 })
-if(res.ok){
-  return "server is ok...."
- }
 let data = await res.json();
 setProfile(data.user)
 localStorage.setItem("email",data.user.email);
 setpro(data.user.email);
  }catch(err){
-  console.log("pata nhi bhai yaaar.....")
+    return "something went wrong..."
   }
    }
 useEffect(() => { 
