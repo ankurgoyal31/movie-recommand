@@ -23,16 +23,16 @@ import { useRef } from 'react';
    const[msg,smsg] = useState("")
 
  useEffect(() => {
-  // const cached = localStorage.getItem("movies")
-  // if (cached){
-  //  loader_condition.current =false;
-  // m(false);
-  // smsg("")
-  // const sort = JSON.parse(cached)
-  // setCount(sort)
-  // let da = sort.filter(item => item.vote_average >=7.5||item.vote_average >=7||item.vote_average >=6).slice(0, 5);    // alert("cache called....")
-  // rs(da);
-  //   }  
+  const cached = localStorage.getItem("movies")
+  if (cached){
+   loader_condition.current =false;
+  m(false);
+  smsg("")
+  const sort = JSON.parse(cached)
+  setCount(sort)
+  let da = sort.filter(item => item.vote_average >=7.5||item.vote_average >=7||item.vote_average >=6).slice(0, 5);    // alert("cache called....")
+  rs(da);
+    }  
    getdata()
 }, [pro])
   
