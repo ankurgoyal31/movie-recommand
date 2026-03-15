@@ -17,13 +17,13 @@ const send=async()=>{
     return;
   }
   smsg("");
-    let data = await fetch(`${import.meta.env.VITE_BACKEND}/user`,{
+    let data = await fetch(`${import.meta.env.VITE_BACKEND}/movie/user`,{
         method:'POST',
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({name,email,password})
     }) 
 
-    const res = await fetch(`${import.meta.env.VITE_BACKEND}/login`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/login`, {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify({ email, password }),
