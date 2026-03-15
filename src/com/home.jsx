@@ -40,7 +40,7 @@ async function login() {
  try{ 
 const token = localStorage.getItem("token");
 if (!token) return;
-let res = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
+let res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/profile`, {
 method: "GET",
 headers: {
 Authorization: `Bearer ${token}`, 
@@ -63,7 +63,7 @@ async function getdata() {
   if(loader_condition.current){smsg("Loading Your Similier Data ...")}
   try {
   m(false);
-     let re = await fetch(`${import.meta.env.VITE_BACKEND}/similier`, {
+     let re = await fetch(`${import.meta.env.VITE_BACKEND}/movie/similier`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ em: pro })
@@ -83,7 +83,7 @@ async function getdata() {
        smsg("")
        return;
     }
-     let res = await fetch(`${import.meta.env.VITE_BACKEND}/movies`, {
+     let res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/movies`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ it: s[0] })
@@ -121,7 +121,7 @@ console.log('hello orld f',s.length)
 }
 
 async function Gits(){
-  let re = await fetch(`${import.meta.env.VITE_BACKEND}/get`, { 
+  let re = await fetch(`${import.meta.env.VITE_BACKEND}/movie/get`, { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({k:search})
@@ -164,7 +164,7 @@ const cd  = (i)=>{
   snum(pages)
 }
 const ck=async(p,i)=>{
- let res = await fetch(`${import.meta.env.VITE_BACKEND}/movies`, {
+ let res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/movies`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({it:s[i]})
@@ -182,7 +182,7 @@ const ck=async(p,i)=>{
   }
   const send=async(p)=>{
 console.log(p)
-const send  = await fetch(`${import.meta.env.VITE_BACKEND}/search`,{
+const send  = await fetch(`${import.meta.env.VITE_BACKEND}/movie/search`,{
   method:'POST',
   headers:{ "Content-Type": "application/json" },
   body:JSON.stringify({ p }) 
