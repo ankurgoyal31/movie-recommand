@@ -55,14 +55,14 @@ function Cont() {
     if(yesref.current){
   let movie = first[0].movie
    console.log(fRef.current) 
-  let sav = await fetch(`${import.meta.env.VITE_BACKEND}/savek`,{ 
+  let sav = await fetch(`${import.meta.env.VITE_BACKEND}/movie/savek`,{ 
     method:"POST",
     headers:{"Content-Type":"application/json"}, 
     body:JSON.stringify({em:pro,m:movie,watcht:watchTimeRef.current,gen:fRef.current.act,ge:fRef.current.overview})
  })
   console.log("call..........")
   if (typeof state === "object") {
- let sa = await fetch(`${import.meta.env.VITE_BACKEND}/store`,{ 
+ let sa = await fetch(`${import.meta.env.VITE_BACKEND}/movie/store`,{ 
     method:"POST",
     headers:{"Content-Type":"application/json"}, 
     body:JSON.stringify({em:pro,m:movie,watcht:curr.current,gen:fRef.current.act,ge:fRef.current.overview})
@@ -87,7 +87,7 @@ finally{
 
   async function liked() {
     try {
-      const like = await fetch(`${import.meta.env.VITE_BACKEND}/count`, {
+      const like = await fetch(`${import.meta.env.VITE_BACKEND}/movie/count`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ m: safeMovie }),
@@ -100,7 +100,7 @@ finally{
       if (check.length > 0) sty.current.style.color = "green";
       else sty.current.style.color = "white";
 
-      const unl = await fetch(`${import.meta.env.VITE_BACKEND}/unl`, {
+      const unl = await fetch(`${import.meta.env.VITE_BACKEND}/movie/unl`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ m: safeMovie }),
@@ -119,7 +119,7 @@ finally{
   const like = async () => {
     if (!fRef.current) return;
 
-    await fetch(`${import.meta.env.VITE_BACKEND}/store`, {
+    await fetch(`${import.meta.env.VITE_BACKEND}/movie/store`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -137,7 +137,7 @@ finally{
   const unlike = async () => {
     if (!fRef.current) return;
 
-    await fetch(`${import.meta.env.VITE_BACKEND}/store`, {
+    await fetch(`${import.meta.env.VITE_BACKEND}/movie/store`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -155,7 +155,7 @@ finally{
     async function get() {
       console.log("get",safeMovie)
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND}/lo`, {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/lo`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ it: safeMovie }),
@@ -164,7 +164,7 @@ finally{
         console.log(dat)
         setfirst(dat);
 
-        const x = await fetch(`${import.meta.env.VITE_BACKEND}/recommend`, {
+        const x = await fetch(`${import.meta.env.VITE_BACKEND}/movie/recommend`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ em: pro, query: safeMovie }),
@@ -173,7 +173,7 @@ finally{
         gs(rec);
         l(false);
 
-        const re = await fetch(`${import.meta.env.VITE_BACKEND}/some`, {
+        const re = await fetch(`${import.meta.env.VITE_BACKEND}/movie/some`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ p: safeMovie }),
@@ -270,7 +270,7 @@ finally{
   }
 
   const send = async(p) => {
-    const send  = await fetch(`${import.meta.env.VITE_BACKEND}/search`,{
+    const send  = await fetch(`${import.meta.env.VITE_BACKEND}/movie/search`,{
   method:'POST',
   headers:{ "Content-Type": "application/json" },
   body:JSON.stringify({ p }) 
@@ -285,7 +285,7 @@ else{
   };
 
   const add = async (a, b, c, d1, e, f1, g, h, i) => {
-    await fetch(`${import.meta.env.VITE_BACKEND}/addM`, {
+    await fetch(`${import.meta.env.VITE_BACKEND}/movie/addM`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ em: pro, m: a, n: b, o: c, p: d1, q: e, r: f1, s: g, t: h, u: i }),
@@ -294,7 +294,7 @@ else{
 
   const des = async () => {
     sets(true);
-    const res = await fetch(`${import.meta.env.VITE_BACKEND}/ais`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/ais`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ data: safeMovie }),
