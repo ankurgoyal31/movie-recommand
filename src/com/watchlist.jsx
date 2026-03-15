@@ -19,7 +19,7 @@ import { scontex } from './contx';
   set_loader(true)
   set_handle_error(false)
 
-  let y = await fetch(`${import.meta.env.VITE_BACKEND}/svs`, {
+  let y = await fetch(`${import.meta.env.VITE_BACKEND}/movie/svs`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ em: pro })
@@ -27,7 +27,7 @@ import { scontex } from './contx';
 console.log(y.status)
   if (!y.ok) throw new Error("svs failed");
   const save = await y.json();
-  let res = await fetch(`${import.meta.env.VITE_BACKEND}/watchl`, {
+  let res = await fetch(`${import.meta.env.VITE_BACKEND}/movie/watchl`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ em: pro })
@@ -67,7 +67,7 @@ useEffect(() => {
 
 const del=async(m,i)=>{
 console.log(m,i)
-let y = await fetch(`${import.meta.env.VITE_BACKEND}/del`,{
+let y = await fetch(`${import.meta.env.VITE_BACKEND}/movie/del`,{
   method:'POST',
   headers:{"Content-Type":"application/json"},
   body:JSON.stringify({id:m})
